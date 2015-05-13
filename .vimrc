@@ -16,32 +16,38 @@ Plugin 'scrooloose/syntastic'               "Syntax checker for all
 Plugin 'thinca/vim-quickrun'                "Run script currently from VIM
 Plugin 'bling/vim-airline'                  "More powerfull status line
 Plugin 'elzr/vim-json'                      "Better JSON file highlight
-Plugin 'Yggdroot/indentLine'                "Show thin vertical lines at each indentation level for code indented with spaces
+Plugin 'Yggdroot/indentLine'                "Show thin vertical lines at each indentation level for
+                                            "code indented with spaces
 
 call vundle#end()                           "Required (end of init)
 filetype plugin indent on                   "Required
 
 """ End of Vundle section
 
-" Plugin specific
+""" Plugin specific
 
 let g:vim_json_syntax_conceal = 0           "Do not hide quotes in json files. Used with elzr/vim-json pluggin
+set timeoutlen=50                           "Do not delay exit from INSERT
+set t_Co=256                                "Use 256 colors for vim-airline
+colorscheme Tomorrow-Night-Bright           "Use nice colorscheme
+
+""" END of Plgin specific
 
 " Searching
-set ignorecase                              "Ignore case when searching
 set smartcase                               "Try to be smarter about cases
 set showmatch                               "Show matching brackets when cursor on one of them
 set hlsearch                                "Highlight search results
 set nohlsearch                              "Turn of hlsear, when we exit searching "mode"
 set incsearch                               "Move to 1st match immediately, while typing
 set magic                                   "Always enable magic for regex
+"set ignorecase                              "Ignore case when searching
 
 " View
 set number                                  "Enable numbering lines
 set showmode                                "Always show mode
 set background=dark                         "If we have black background in terminal
 set cursorline                              "Current line highlight
-set colorcolumn=80                          "Red line on 80 coloumn
+set colorcolumn=120                          "Red line on 80 coloumn
 set ruler                                   "Always show current position
 set laststatus=2                            "Always show status line
 set visualbell                              "Use visual bell instead of beeping when something wrong

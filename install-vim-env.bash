@@ -40,6 +40,7 @@ do_install(){
     fi
     ln -s git/vim-config/.vimrc
     vim +PluginInstall +qall
+    ln -s ~/git/vim-config/.vim/colors ~/.vim/
 }
 
 if [ "$(basename $0)" == "install-vim-env.bash" ]; then
