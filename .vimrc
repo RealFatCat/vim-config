@@ -1,4 +1,4 @@
-set nocompatible	"Turn off vi compatibility
+set nocompatible        "Turn off vi compatibility
 
 """ Vundle Section
 
@@ -14,87 +14,90 @@ Plugin 'gmarik/Vundle.vim'                  "Let Vundle manage Vundle, required
 Plugin 'ntpeters/vim-better-whitespace'     "Show tralling whitespaces
 Plugin 'scrooloose/syntastic'               "Syntax checker for all
 Plugin 'thinca/vim-quickrun'                "Run script currently from VIM
-"Plugin 'Lokaltog/vim-powerline'            "More powerfull status line
-Plugin 'Yggdroot/indentLine'                "Show thin vertical lines at each
-                                            "indentation level for code
-                                            "indented with spaces
+Plugin 'bling/vim-airline'                  "More powerfull status line
+Plugin 'elzr/vim-json'                      "Better JSON file highlight
+Plugin 'Yggdroot/indentLine'                "Show thin vertical lines at each indentation level for code indented with spaces
 
 call vundle#end()                           "Required (end of init)
 filetype plugin indent on                   "Required
 
 """ End of Vundle section
 
-"Searching
-"set ignorecase		"Ignore case when searching
-set smartcase		"Try to be smarter about cases
-set showmatch		"Show matching brackets when cursor on one of them
-set hlsearch		"Highlight search results
-set nohlsearch		"Turn of hlsear, when we exit searching "mode"
-set incsearch		"Move to 1st match immediately, while typing
-set magic		"Always enable magic for regex
+" Plugin specific
 
-"View
-set number              "Enable numbering lines
-set showmode		"Always show mode
-set background=dark	"If we have black background in terminal
-set cursorline		"Current line highlight
-set colorcolumn=80	"Red line on 80 coloumn
-set ruler		"Always show current position
-set laststatus=2	"Always show status line
-set visualbell		"Use visual bell instead of beeping when something wrong
-set wildmenu		"Enable wildmenu. It's realy wild.
-set list lcs=tab:\|\    "Mark tabulated indents
+let g:vim_json_syntax_conceal = 0           "Do not hide quotes in json files. Used with elzr/vim-json pluggin
+
+" Searching
+set ignorecase                              "Ignore case when searching
+set smartcase                               "Try to be smarter about cases
+set showmatch                               "Show matching brackets when cursor on one of them
+set hlsearch                                "Highlight search results
+set nohlsearch                              "Turn of hlsear, when we exit searching "mode"
+set incsearch                               "Move to 1st match immediately, while typing
+set magic                                   "Always enable magic for regex
+
+" View
+set number                                  "Enable numbering lines
+set showmode                                "Always show mode
+set background=dark                         "If we have black background in terminal
+set cursorline                              "Current line highlight
+set colorcolumn=80                          "Red line on 80 coloumn
+set ruler                                   "Always show current position
+set laststatus=2                            "Always show status line
+set visualbell                              "Use visual bell instead of beeping when something wrong
+set wildmenu                                "Enable wildmenu. It's realy wild.
+set list lcs=tab:\|\                        "Mark tabulated indents
 
 """ Hardcore wrapping lines
-set wrap		"Enable wrap lines
-set textwidth=0		"Preventing Vim from automatically inserting line breaks (<CR>)
-set wrapmargin=0	"Also need for preventing Vim from automatically inserting line breaks
-set linebreak		"Drop whole word to new line, but not by character
-set nolist		"Because 'list' disables linebreak
-set showbreak=>\ 	"Show where line is broken
+set wrap                                    "Enable wrap lines
+set textwidth=0                             "Preventing Vim from automatically inserting line breaks (<CR>)
+set wrapmargin=0                            "Also need for preventing Vim from automatically inserting line breaks
+set linebreak                               "Drop whole word to new line, but not by character
+set nolist                                  "Because 'list' disables linebreak
+set showbreak=>\                            "Show where line is broken
 
-"Encoding
-set encoding=utf-8			"Default encoding
-set termencoding=utf-8			"Default terminal encoding
-set fileencodings=utf-8,cp1251,koi8-r	"Try to open file in this encodings
+" Encoding
+set encoding=utf-8                          "Default encoding
+set termencoding=utf-8                      "Default terminal encoding
+set fileencodings=utf-8,cp1251,koi8-r       "Try to open file in this encodings
 
-"Syntax
-syntax on		"Enable syntax support
-"filetype on		"Enable filetype support
+" Syntax
+syntax on                                   "Enable syntax support
+"filetype on                                "Enable filetype support
 
-"History
-set undolevels=1024	"How much undo levels should vim remember
-set history=256         "Sets how many lines of history VIM has to remember
+" History
+set undolevels=1024                         "How much undo levels should vim remember
+set history=256                             "Sets how many lines of history VIM has to remember
 
-"Experimental
-set autoindent		"Make auto indent (Cap here)
-set smarttab		"Analyse indents in doc and do same shit
-set expandtab		"Always change tabs into spaces.
-set softtabstop=4 	"Change tabs by four spaces.
-set shiftwidth=4	"Move the string by four symbols on string shifting.
-set shellslash          "Change backslash to slash in paths. Because backslash sucks.
-set scrolloff=8         "When the page starts to scroll, keep the cursor 8 lines from the top and bottom."
-
+" Experimental
+set autoindent                              "Make auto indent (Cap here)
+set smarttab                                "Analyse indents in doc and do same shit
+set expandtab                               "Always change tabs into spaces.
+set softtabstop=4                           "Change tabs by four spaces.
+set shiftwidth=4                            "Move the string by four symbols on string shifting.
+set shellslash                              "Change backslash to slash in paths. Because backslash sucks.
+set scrolloff=7                             "When the page starts to scroll, keep the cursor 8 lines from the top and bottom."
 set pastetoggle=<F2>
 set clipboard+=unnamedplus
 
-"Mapping
-""" Write file if I forget to open ir with sudo
+""" Mapping
+
+" Write file if I forget to open ir with sudo
 nmap <F3> :w !sudo tee % >/dev/null<CR><CR>
 
-""" Toggle line numbers
+" Toggle line numbers
 nmap <F4> :set invnumber<CR>
 
-""" Because I'm tired to write ! symbol
-cmap q	q!
+" Because I'm tired to write ! symbol
+cmap q  q!
 
-""" Enabling true hardcore mode
+" Enabling hardcore mode in normal mode
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-""" Keyboard mapping
+" RU Keyboard mapping
 map ё `
 map й q
 map ц w
@@ -161,3 +164,5 @@ map Т N
 map Ь M
 map Б <
 map Ю >
+
+""" END of Mapping
