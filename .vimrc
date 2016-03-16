@@ -8,6 +8,7 @@ set nocompatible        "Turn off vi compatibility
 filetype off                                "Required
 
 set rtp+=~/.vim/bundle/Vundle.vim           "Set the runtime path to include Vundle
+
 call vundle#begin()                         "Init Vundle
 
 Plugin 'gmarik/Vundle.vim'                  "Let Vundle manage Vundle, required
@@ -15,8 +16,9 @@ Plugin 'ntpeters/vim-better-whitespace'     "Show tralling whitespaces
 Plugin 'scrooloose/syntastic'               "Syntax checker for all
 Plugin 'thinca/vim-quickrun'                "Run script currently from VIM
 Plugin 'bling/vim-airline'                  "More powerfull status line
+Plugin 'vim-airline/vim-airline-themes'     "More powerfull status line
 Plugin 'elzr/vim-json'                      "Better JSON file highlight
-Plugin 'Yggdroot/indentLine'                "Show thin vertical lines at each indentation level for
+"Plugin 'Yggdroot/indentLine'               "Show thin vertical lines at each indentation level for
                                             "code indented with spaces
 
 call vundle#end()                           "Required (end of init)
@@ -28,10 +30,25 @@ filetype plugin indent on                   "Required
 
 let g:vim_json_syntax_conceal = 0           "Do not hide quotes in json files. Used with elzr/vim-json pluggin
 set timeoutlen=50                           "Do not delay exit from INSERT
-set t_Co=256                                "Use 256 colors for vim-airline
-colorscheme Tomorrow-Night-Bright           "Use nice colorscheme
 
 """ END of Plgin specific
+
+" 256 color term tweaks
+let s:colorful_term=(&term=~"xterm") || (&term=~"screen")
+if s:colorful_term
+    " 256 color -- this is a bad idea generally, but I use it anyway
+    let &t_Co=256
+    " don't clear background color
+    set t_ut=
+    " restore screen after quitting
+    if has("terminfo")
+        let &t_Sb="\ESC[4%p1%dm"
+        let &t_Sf="\ESC[3%p1%dm"
+    else
+        let &t_Sb="\ESC[4%dm"
+        let &t_Sf="\ESC[3%dm"
+    endif
+endif
 
 " Searching
 set smartcase                               "Try to be smarter about cases
@@ -40,19 +57,22 @@ set hlsearch                                "Highlight search results
 set nohlsearch                              "Turn of hlsear, when we exit searching "mode"
 set incsearch                               "Move to 1st match immediately, while typing
 set magic                                   "Always enable magic for regex
-"set ignorecase                              "Ignore case when searching
+"set ignorecase                             "Ignore case when searching
 
 " View
 set number                                  "Enable numbering lines
 set showmode                                "Always show mode
 set background=dark                         "If we have black background in terminal
+"set t_Co=256                               "Use 256 colors for vim-airline
+colorscheme nofrils-dark                    "Use nice colorscheme
+let g:airline_theme='jellybeans'
 set cursorline                              "Current line highlight
-set colorcolumn=120                          "Red line on 80 coloumn
+set colorcolumn=120                         "Red line on 120 coloumn
 set ruler                                   "Always show current position
 set laststatus=2                            "Always show status line
 set visualbell                              "Use visual bell instead of beeping when something wrong
 set wildmenu                                "Enable wildmenu. It's realy wild.
-set list lcs=tab:\|\                        "Mark tabulated indents
+"set list lcs=tab:\|\                        "Mark tabulated indents
 
 """ Hardcore wrapping lines
 set wrap                                    "Enable wrap lines
