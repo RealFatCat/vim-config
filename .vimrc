@@ -65,7 +65,8 @@ set showmode                                "Always show mode
 set background=dark                         "If we have black background in terminal
 "set t_Co=256                               "Use 256 colors for vim-airline
 colorscheme nofrils-dark                    "Use nice colorscheme
-let g:airline_theme='jellybeans'
+"let g:airline_theme='base16'
+let g:airline_theme='raven'
 set cursorline                              "Current line highlight
 set colorcolumn=120                         "Red line on 120 coloumn
 set ruler                                   "Always show current position
