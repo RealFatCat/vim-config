@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 # This script installs my vim environment from scratch.
 # Works on Arch/Debian/Ubuntu.
 
@@ -32,15 +33,15 @@ check_git(){
 do_install(){
     check_git
     cd ~
-    install -d ~/.vim/bundle/ ~/git/vim-config
-    git clone https://github.com/RealFatCat/vim-config.git ~/git/vim-config
+    install -d ~/.vim/bundle/ ~/git/
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    git clone https://github.com/robertmeta/nofrils.git ~/git/nofrils
     if [ -e ~/.vimrc ]; then
         mv ~/.vimrc{,.old}
     fi
-    ln -s git/vim-config/.vimrc
+    ln -s git/vim-config/vimrc .vimrc
     vim +PluginInstall +qall
-    ln -s ~/git/vim-config/.vim/colors ~/.vim/
+    ln -s ~/git/nofrils/colors ~/.vim/
 }
 
 if [ "$(basename $0)" == "install-vim-env.bash" ]; then
