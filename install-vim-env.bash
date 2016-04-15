@@ -35,6 +35,9 @@ do_install(){
     cd ~
 
     mv .vimrc .vimrc.old
+    if [ -e '.vim.old' ];then
+        rm -rf .vim.old
+    fi
     mv .vim .vim.old
 
     install -d ~/.vim/bundle/ ~/git/
@@ -43,9 +46,8 @@ do_install(){
     git clone https://github.com/robertmeta/nofrils.git ~/git/nofrils
 
     ln -s git/vim-config/vimrc .vimrc
-    vim +PluginInstall +qall
     ln -s ~/git/nofrils/colors ~/.vim/
+    vim +PluginInstall +qall -u NONE
 }
-
 
 do_install
