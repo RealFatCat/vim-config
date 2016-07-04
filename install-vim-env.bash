@@ -47,7 +47,7 @@ do_install(){
 
     ln -s git/vim-config/vimrc .vimrc
     ln -s ~/git/nofrils/colors ~/.vim/
-    vim +PluginInstall +qall -u NONE
+    vim +PluginInstall +qall &>/dev/null
 }
 
 do_install
