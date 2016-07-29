@@ -54,14 +54,14 @@ endif
 set smartcase                               "Try to be smarter about cases
 set showmatch                               "Show matching brackets when cursor on one of them
 set hlsearch                                "Highlight search results
-set nohlsearch                              "Turn of hlsear, when we exit searching "mode"
+set nohlsearch                              "Turn of hlsear, when we exit searching mode
 set incsearch                               "Move to 1st match immediately, while typing
 set magic                                   "Always enable magic for regex
-set ignorecase                             "Ignore case when searching
+set ignorecase                              "Ignore case when searching
 
 " View
 set number                                  "Enable numbering lines
-set relativenumber                                  "Enable numbering lines
+"set relativenumber                         "Enable numbering lines
 set showmode                                "Always show mode
 set background=dark                         "If we have black background in terminal
 "set t_Co=256                               "Use 256 colors for vim-airline
