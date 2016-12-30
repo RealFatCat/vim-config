@@ -18,6 +18,8 @@ Plugin 'thinca/vim-quickrun'                "Run script currently from VIM
 Plugin 'bling/vim-airline'                  "More powerfull status line
 Plugin 'vim-airline/vim-airline-themes'     "More powerfull status line
 Plugin 'elzr/vim-json'                      "Better JSON file highlight
+Plugin 'vim-scripts/indentpython.vim'       "Python indentation like a god
+Plugin 'davidhalter/jedi-vim.git'           "Python autocomplete
 "Plugin 'Yggdroot/indentLine'               "Show thin vertical lines at each indentation level for
                                             "code indented with spaces
 
@@ -29,6 +31,7 @@ filetype plugin indent on                   "Required
 """ Plugin specific
 
 let g:vim_json_syntax_conceal = 0           "Do not hide quotes in json files. Used with elzr/vim-json pluggin
+let g:jedi#popup_on_dot = 0                 "Do not pop up completion when dot(.) appears. Use Ctrl+Space instead
 set timeoutlen=50                           "Do not delay exit from INSERT
 
 """ END of Plgin specific
@@ -67,7 +70,8 @@ set background=dark                         "If we have black background in term
 "set t_Co=256                               "Use 256 colors for vim-airline
 colorscheme nofrils-dark                    "Use nice colorscheme
 "let g:airline_theme='base16'
-let g:airline_theme='raven'
+"let g:airline_theme='raven'
+let g:airline_theme='distinguished'
 set cursorline                              "Current line highlight
 set colorcolumn=120                         "Red line on 120 coloumn
 set ruler                                   "Always show current position
@@ -97,14 +101,26 @@ syntax on                                   "Enable syntax support
 set undolevels=1024                         "How much undo levels should vim remember
 set history=256                             "Sets how many lines of history VIM has to remember
 
-" Experimental
-set autoindent                              "Make auto indent (Cap here)
-set smarttab                                "Analyse indents in doc and do same shit
-set expandtab                               "Always change tabs into spaces.
+set tabstop=4                               "Change tabs by four spaces.
 set softtabstop=4                           "Change tabs by four spaces.
 set shiftwidth=4                            "Move the string by four symbols on string shifting.
+set textwidth=119
+set expandtab                               "Always change tabs into spaces.
+set autoindent                              "Make auto indent (Cap here)
+set fileformat=unix
+
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
+" Experimental
+"set smarttab                                "Analyse indents in doc and do same shit
 set shellslash                              "Change backslash to slash in paths. Because backslash sucks.
 set scrolloff=7                             "When the page starts to scroll, keep the cursor 8 lines from the top and bottom."
+set foldmethod=indent                       "Fold by indents (for Python)
+set foldlevelstart=99                       "Do not autofold on fileopen
+set foldlevel=99                            "Do not autofold on fileopen
 set pastetoggle=<F2>
 set clipboard+=unnamedplus
 
