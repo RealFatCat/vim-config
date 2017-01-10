@@ -18,7 +18,7 @@ Plugin 'thinca/vim-quickrun'                "Run script currently from VIM
 Plugin 'bling/vim-airline'                  "More powerfull status line
 Plugin 'vim-airline/vim-airline-themes'     "More powerfull status line
 Plugin 'elzr/vim-json'                      "Better JSON file highlight
-Plugin 'vim-scripts/indentpython.vim'       "Python indentation like a god
+"Plugin 'vim-scripts/indentpython.vim'       "Python indentation like a god
 Plugin 'davidhalter/jedi-vim.git'           "Python autocomplete
 "Plugin 'Yggdroot/indentLine'               "Show thin vertical lines at each indentation level for
                                             "code indented with spaces
@@ -104,15 +104,15 @@ set history=256                             "Sets how many lines of history VIM 
 set tabstop=4                               "Change tabs by four spaces.
 set softtabstop=4                           "Change tabs by four spaces.
 set shiftwidth=4                            "Move the string by four symbols on string shifting.
-set textwidth=119
+"set textwidth=119
 set expandtab                               "Always change tabs into spaces.
 set autoindent                              "Make auto indent (Cap here)
 set fileformat=unix
 
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+"au BufNewFile,BufRead *.js, *.html, *.css
+"    \ set tabstop=2
+"    \ set softtabstop=2
+"    \ set shiftwidth=2
 
 " Experimental
 "set smarttab                                "Analyse indents in doc and do same shit
