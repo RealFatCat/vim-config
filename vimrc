@@ -32,6 +32,8 @@ filetype plugin indent on                   "Required
 
 let g:vim_json_syntax_conceal = 0           "Do not hide quotes in json files. Used with elzr/vim-json pluggin
 let g:jedi#popup_on_dot = 0                 "Do not pop up completion when dot(.) appears. Use Ctrl+Space instead
+let g:jedi#use_splits_not_buffers = "right" "Use splits instead of buffers
+let g:jedi#show_call_signatures = "2"       "Show signs in command line
 set timeoutlen=50                           "Do not delay exit from INSERT
 
 """ END of Plgin specific
