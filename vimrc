@@ -18,6 +18,7 @@ Plugin 'thinca/vim-quickrun'                "Run script currently from VIM
 Plugin 'bling/vim-airline'                  "More powerfull status line
 Plugin 'vim-airline/vim-airline-themes'     "More powerfull status line
 Plugin 'elzr/vim-json'                      "Better JSON file highlight
+Plugin 'scrooloose/nerdtree'
 "Plugin 'vim-scripts/indentpython.vim'       "Python indentation like a god
 Plugin 'davidhalter/jedi-vim.git'           "Python autocomplete
 "Plugin 'Yggdroot/indentLine'               "Show thin vertical lines at each indentation level for
