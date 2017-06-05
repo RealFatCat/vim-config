@@ -60,7 +60,7 @@ endif
 set smartcase                               "Try to be smarter about cases
 set showmatch                               "Show matching brackets when cursor on one of them
 set hlsearch                                "Highlight search results
-set nohlsearch                              "Turn of hlsear, when we exit searching mode
+set nohlsearch                              "Turn off hlsearch, when we exit searching mode
 set incsearch                               "Move to 1st match immediately, while typing
 set magic                                   "Always enable magic for regex
 set ignorecase                              "Ignore case when searching
@@ -111,6 +111,7 @@ set shiftwidth=4                            "Move the string by four symbols on 
 set expandtab                               "Always change tabs into spaces.
 set autoindent                              "Make auto indent (Cap here)
 set fileformat=unix
+set hidden                                  "Switch between buffers without having to save first.
 
 "au BufNewFile,BufRead *.js, *.html, *.css
 "    \ set tabstop=2
