@@ -22,8 +22,7 @@ Plugin 'scrooloose/nerdtree'                "Dirs in tree
 Plugin 'scrooloose/nerdcommenter'           "Comment faster
 "Plugin 'vim-scripts/indentpython.vim'      "Python indentation like a god
 Plugin 'davidhalter/jedi-vim.git'           "Python autocomplete
-"Plugin 'Yggdroot/indentLine'               "Show thin vertical lines at each indentation level for
-                                            "code indented with spaces
+Plugin 'nathanaelkane/vim-indent-guides'    "Show lines at indentation (with <leader>ig)
 
 call vundle#end()                           "Required (end of init)
 filetype plugin on
@@ -37,8 +36,13 @@ let g:vim_json_syntax_conceal = 0           "Do not hide quotes in json files. U
 let g:jedi#popup_on_dot = 0                 "Do not pop up completion when dot(.) appears. Use Ctrl+Space instead
 let g:jedi#use_splits_not_buffers = "right" "Use splits instead of buffers
 let g:jedi#show_call_signatures = "2"       "Show signs in command line
-"let g:NERDSpaceDelims = 1                   "Force spaces after comment symbol
+" let g:NERDSpaceDelims = 1                   "Force spaces after comment symbol
 set timeoutlen=1000                         "Do not delay exit from INSERT
+
+" Proper colors for vim-indent_guides plugins
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#303030   ctermbg=236
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3a3a3a   ctermbg=237
 
 " Disable some defaults plugins
 let g:loaded_2html_plugin = 1
