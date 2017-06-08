@@ -18,13 +18,15 @@ Plugin 'thinca/vim-quickrun'                "Run script currently from VIM
 Plugin 'bling/vim-airline'                  "More powerfull status line
 Plugin 'vim-airline/vim-airline-themes'     "More powerfull status line
 Plugin 'elzr/vim-json'                      "Better JSON file highlight
-Plugin 'scrooloose/nerdtree'
-"Plugin 'vim-scripts/indentpython.vim'       "Python indentation like a god
+Plugin 'scrooloose/nerdtree'                "Dirs in tree
+Plugin 'scrooloose/nerdcommenter'           "Comment faster
+"Plugin 'vim-scripts/indentpython.vim'      "Python indentation like a god
 Plugin 'davidhalter/jedi-vim.git'           "Python autocomplete
 "Plugin 'Yggdroot/indentLine'               "Show thin vertical lines at each indentation level for
                                             "code indented with spaces
 
 call vundle#end()                           "Required (end of init)
+filetype plugin on
 filetype plugin indent on                   "Required
 
 """ End of Vundle section
@@ -35,7 +37,15 @@ let g:vim_json_syntax_conceal = 0           "Do not hide quotes in json files. U
 let g:jedi#popup_on_dot = 0                 "Do not pop up completion when dot(.) appears. Use Ctrl+Space instead
 let g:jedi#use_splits_not_buffers = "right" "Use splits instead of buffers
 let g:jedi#show_call_signatures = "2"       "Show signs in command line
-set timeoutlen=50                           "Do not delay exit from INSERT
+"let g:NERDSpaceDelims = 1                   "Force spaces after comment symbol
+set timeoutlen=1000                         "Do not delay exit from INSERT
+
+" Disable some defaults plugins
+let g:loaded_2html_plugin = 1
+let g:loaded_getscriptPlugin = 1
+let g:loaded_rrhelper = 1
+let g:loaded_spellfile_plugin = 1
+let g:loaded_vimballPlugin = 1
 
 """ END of Plgin specific
 
@@ -55,6 +65,7 @@ if s:colorful_term
         let &t_Sf="\ESC[3%dm"
     endif
 endif
+
 
 " Searching
 set smartcase                               "Try to be smarter about cases
@@ -81,6 +92,7 @@ set ruler                                   "Always show current position
 set laststatus=2                            "Always show status line
 set visualbell                              "Use visual bell instead of beeping when something wrong
 set wildmenu                                "Enable wildmenu. It's realy wild.
+set showcmd                                 "Show entered symbols
 "set list lcs=tab:\|\                        "Mark tabulated indents
 
 """ Hardcore wrapping lines
@@ -144,6 +156,11 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+
+" Smarter Cursorline
+autocmd InsertLeave,WinEnter * set cursorline
+autocmd InsertEnter,WinLeave * set nocursorline
 
 " RU Keyboard mapping
 map ё `
