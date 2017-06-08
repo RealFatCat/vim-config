@@ -23,6 +23,7 @@ Plugin 'scrooloose/nerdcommenter'           "Comment faster
 "Plugin 'vim-scripts/indentpython.vim'      "Python indentation like a god
 Plugin 'davidhalter/jedi-vim.git'           "Python autocomplete
 Plugin 'nathanaelkane/vim-indent-guides'    "Show lines at indentation (with <leader>ig)
+Plugin 'ctrlpvim/ctrlp.vim'                 "fuzzy find
 
 call vundle#end()                           "Required (end of init)
 filetype plugin on
