@@ -152,6 +152,9 @@ nmap <F3> :w !sudo tee % >/dev/null<CR><CR>
 " Toggle line numbers
 nmap <F4> :set invnumber<CR>
 
+" Open nerdtree with Ctrl+n
+nmap <C-n> :NERDTree<CR>
+
 " Because I'm tired to write ! symbol
 cmap q  q!
 
