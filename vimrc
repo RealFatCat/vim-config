@@ -54,6 +54,9 @@ let g:loaded_vimballPlugin = 1
 
 """ END of Plgin specific
 
+" open almost everything in buffers
+autocmd BufAdd,BufNewFile * nested tab sball
+
 " 256 color term tweaks
 let s:colorful_term=(&term=~"xterm") || (&term=~"screen")
 if s:colorful_term
