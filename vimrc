@@ -55,7 +55,7 @@ let g:loaded_vimballPlugin = 1
 """ END of Plgin specific
 
 " open almost everything in buffers
-autocmd BufAdd,BufNewFile * nested tab sball
+"autocmd BufAdd,BufNewFile * nested tab sball
 
 " 256 color term tweaks
 let s:colorful_term=(&term=~"xterm") || (&term=~"screen")
@@ -104,7 +104,7 @@ set showcmd                                 "Show entered symbols
 "set list lcs=tab:\|\                        "Mark tabulated indents
 
 """ Hardcore wrapping lines
-set wrap                                    "Enable wrap lines
+set nowrap                                    "Enable wrap lines
 set textwidth=0                             "Preventing Vim from automatically inserting line breaks (<CR>)
 set wrapmargin=0                            "Also need for preventing Vim from automatically inserting line breaks
 set linebreak                               "Drop whole word to new line, but not by character
