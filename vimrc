@@ -8,6 +8,9 @@ set nocompatible        "Turn off vi compatibility
 filetype off                                "Required
 
 set rtp+=~/.vim/bundle/Vundle.vim           "Set the runtime path to include Vundle
+if filereadable("~/git/fzf")
+    set rtp+=~/git/fzf                      "Add FZF to runtime path
+endif
 
 call vundle#begin()                         "Init Vundle
 
@@ -23,7 +26,7 @@ Plugin 'scrooloose/nerdcommenter'           "Comment faster
 "Plugin 'vim-scripts/indentpython.vim'      "Python indentation like a god
 Plugin 'davidhalter/jedi-vim.git'           "Python autocomplete
 Plugin 'nathanaelkane/vim-indent-guides'    "Show lines at indentation (with <leader>ig)
-Plugin 'ctrlpvim/ctrlp.vim'                 "fuzzy find
+Plugin 'junegunn/fzf'                       "fuzzy find
 
 call vundle#end()                           "Required (end of init)
 filetype plugin on
@@ -37,8 +40,8 @@ let g:vim_json_syntax_conceal = 0           "Do not hide quotes in json files. U
 let g:jedi#popup_on_dot = 0                 "Do not pop up completion when dot(.) appears. Use Ctrl+Space instead
 let g:jedi#use_splits_not_buffers = "right" "Use splits instead of buffers
 let g:jedi#show_call_signatures = "2"       "Show signs in command line
-" let g:NERDSpaceDelims = 1                   "Force spaces after comment symbol
-set timeoutlen=1000                         "Do not delay exit from INSERT
+let g:NERDSpaceDelims = 1                   "Force spaces after comment symbol
+"set timeoutlen=1000                         "Do not delay exit from INSERT
 
 " Proper colors for vim-indent_guides plugins
 let g:indent_guides_auto_colors = 0
@@ -158,6 +161,9 @@ nmap <F4> :set invnumber<CR>
 
 " Open nerdtree with Ctrl+n
 nmap <C-n> :NERDTree<CR>
+
+" Start FZF
+nmap <C-p> :FZF<CR>
 
 " Because I'm tired to write ! symbol
 cmap q  q!

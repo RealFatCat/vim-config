@@ -2,43 +2,30 @@
 set -x
 # This script installs my vim environment from scratch.
 # Works on Arch/Debian/Ubuntu.
+do_install(){
 
-try_get_git(){
-# Here we trying to install git
-
-    local OS_NAME="$(egrep '^NAME=' /etc/issue | awk -F'=' '{print $2}')"
-    case ${OS_NAME} in
+    OS_NAME="$(cat /etc/*-release | awk -F'=' '/^(OS_)?NAME=/ {print $2}')"
+    case $OS_NAME in
         \"Arch\ Linux\")
-        pacman -S git
-        ;;
+            sudo pacman -S fzf
+            ;;
         \"Debian\"|\"Ubuntu\"|\"Raspbian\ GNU/Linux\")
-        apt-get update -qq
-        apt-get install git
-        ;;
+            git clone --depth 1 https://github.com/junegunn/fzf.git ~/git/fzf
+            cd ~/git/fzf/ && ./installl --bin --64
+            ;;
+        *)
+            echo WUT?
+            exit 1
+            ;;
     esac
 
-}
-
-check_git(){
-    if [ -z "$(which git)" ]; then
-        printf "git is not found, trying to get it...\n"
-        try_get_git
-        if [ $? -ne 0 ]; then
-            printf "Could not get git :(\nTry to install it manually.\nExit.\n"
-            exit 1
-        fi
-    fi
-}
-
-do_install(){
-    check_git
     cd ~
 
-    mv .vimrc .vimrc.old
-    if [ -e '.vim.old' ];then
+    mv .vimrc .vimrc.old || :
+    if [ -e '.vim.old' ]; then
         rm -rf .vim.old
     fi
-    mv .vim .vim.old
+    mv .vim .vim.old || :
 
     install -d ~/.vim/bundle/ ~/git/
 
