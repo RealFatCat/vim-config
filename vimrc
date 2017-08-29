@@ -35,6 +35,8 @@ filetype plugin indent on                   "Required
 """ End of Vundle section
 
 """ Plugin specific
+let g:syntastic_python_flake8_post_args='--ignore=E501,E402,F401'
+let g:syntastic_python_checkers = ["python2", "flake8"]
 
 let g:vim_json_syntax_conceal = 0           "Do not hide quotes in json files. Used with elzr/vim-json pluggin
 let g:jedi#popup_on_dot = 0                 "Do not pop up completion when dot(.) appears. Use Ctrl+Space instead
