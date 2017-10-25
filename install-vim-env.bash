@@ -11,7 +11,6 @@ do_install(){
             ;;
         \"Debian\"|\"Ubuntu\"|\"Raspbian\ GNU/Linux\")
             git clone --depth 1 https://github.com/junegunn/fzf.git ~/git/fzf
-            cd ~/git/fzf/ && ./install --bin --64
             ;;
         *)
             echo WUT?

@@ -8,9 +8,6 @@ set nocompatible        "Turn off vi compatibility
 filetype off                                "Required
 
 set rtp+=~/.vim/bundle/Vundle.vim           "Set the runtime path to include Vundle
-if filereadable("~/git/fzf")
-    set rtp+=~/git/fzf                      "Add FZF to runtime path
-endif
 
 call vundle#begin()                         "Init Vundle
 
