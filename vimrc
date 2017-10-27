@@ -24,6 +24,7 @@ Plugin 'scrooloose/nerdcommenter'           "Comment faster
 Plugin 'davidhalter/jedi-vim.git'           "Python autocomplete
 Plugin 'nathanaelkane/vim-indent-guides'    "Show lines at indentation (with <leader>ig)
 Plugin 'junegunn/fzf'                       "fuzzy find
+Plugin 'ludovicchabant/vim-gutentags'       "Autotags
 
 call vundle#end()                           "Required (end of init)
 filetype plugin on
@@ -41,6 +42,8 @@ let g:jedi#use_splits_not_buffers = "right" "Use splits instead of buffers
 let g:jedi#show_call_signatures = "2"       "Show signs in command line
 let g:NERDSpaceDelims = 1                   "Force spaces after comment symbol
 "set timeoutlen=1000                         "Do not delay exit from INSERT
+set statusline+=%{gutentags#statusline('[Generating...]')}
+let g:gutentags_project_root = ['.svn']
 
 " Proper colors for vim-indent_guides plugins
 let g:indent_guides_auto_colors = 0
@@ -143,7 +146,7 @@ set hidden                                  "Switch between buffers without havi
 " Experimental
 "set smarttab                                "Analyse indents in doc and do same shit
 set shellslash                              "Change backslash to slash in paths. Because backslash sucks.
-set scrolloff=7                             "When the page starts to scroll, keep the cursor 8 lines from the top and bottom."
+set scrolloff=7                             "When the page starts to scroll, keep the cursor 7 lines from the top and bottom."
 set foldmethod=indent                       "Fold by indents (for Python)
 set foldlevelstart=99                       "Do not autofold on fileopen
 set foldlevel=99                            "Do not autofold on fileopen
@@ -157,6 +160,9 @@ nmap <F3> :w !sudo tee % >/dev/null<CR><CR>
 
 " Toggle line numbers
 nmap <F4> :set invnumber<CR>
+
+" Buffers => tabs
+nmap <F5> :tab sball <CR>
 
 " Open nerdtree with Ctrl+n
 nmap <C-n> :NERDTree<CR>
