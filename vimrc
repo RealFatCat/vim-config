@@ -25,6 +25,7 @@ Plugin 'davidhalter/jedi-vim.git'           "Python autocomplete
 Plugin 'nathanaelkane/vim-indent-guides'    "Show lines at indentation (with <leader>ig)
 Plugin 'junegunn/fzf'                       "fuzzy find
 Plugin 'ludovicchabant/vim-gutentags'       "Autotags
+Plugin 'vimwiki/vimwiki'                    "Make wiki in vim
 
 call vundle#end()                           "Required (end of init)
 filetype plugin on
