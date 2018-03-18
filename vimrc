@@ -1,50 +1,58 @@
 set nocompatible        "Turn off vi compatibility
 
-""" Vundle Section
+""" Vim-Plug section
 
-" install -d ~/.vim/bundle/
-" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" Autoinstall Vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-filetype off                                "Required
+" Install plugins section
+call plug#begin()
 
-set rtp+=~/.vim/bundle/Vundle.vim           "Set the runtime path to include Vundle
+Plug 'ntpeters/vim-better-whitespace'       "Show tralling whitespaces
+Plug 'mhinz/vim-signify'                    "Show diffs in-file
+Plug 'vim-syntastic/syntastic'              "Syntax checker for all
+"Plug 'sheerun/vim-polyglot'                "Syntax highlighting for all
+Plug 'thinca/vim-quickrun'                  "Run script currently from VIM
+Plug 'itchyny/lightline.vim'                "Another status line
+Plug 'elzr/vim-json'                        "Better JSON file highlight
+"Plug 'davidhalter/jedi-vim.git'            "Python autocomplete
+Plug 'nathanaelkane/vim-indent-guides'      "Show lines at indentation (with <leader>ig)
+Plug 'ludovicchabant/vim-gutentags'         "Autotags
+Plug 'vimwiki/vimwiki'                      "Make wiki in vim
 
-call vundle#begin()                         "Init Vundle
+"Fuzzy search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 
-Plugin 'gmarik/Vundle.vim'                  "Let Vundle manage Vundle, required
-Plugin 'ntpeters/vim-better-whitespace'     "Show tralling whitespaces
-Plugin 'scrooloose/syntastic'               "Syntax checker for all
-Plugin 'thinca/vim-quickrun'                "Run script currently from VIM
-Plugin 'bling/vim-airline'                  "More powerfull status line
-Plugin 'vim-airline/vim-airline-themes'     "More powerfull status line
-Plugin 'elzr/vim-json'                      "Better JSON file highlight
-Plugin 'scrooloose/nerdtree'                "Dirs in tree
-Plugin 'scrooloose/nerdcommenter'           "Comment faster
-"Plugin 'vim-scripts/indentpython.vim'      "Python indentation like a god
-Plugin 'davidhalter/jedi-vim.git'           "Python autocomplete
-Plugin 'nathanaelkane/vim-indent-guides'    "Show lines at indentation (with <leader>ig)
-Plugin 'junegunn/fzf'                       "fuzzy find
-Plugin 'ludovicchabant/vim-gutentags'       "Autotags
-Plugin 'vimwiki/vimwiki'                    "Make wiki in vim
+call plug#end()                           "Required (end of init)
 
-call vundle#end()                           "Required (end of init)
-filetype plugin on
-filetype plugin indent on                   "Required
-
-""" End of Vundle section
+""" End of Vim-Plug section
 
 """ Plugin specific
-let g:syntastic_python_flake8_post_args='--ignore=E501,E402,F401'
+let g:better_whitespace_enabled=1           "Enable plugin
+let g:strip_whitespace_on_save=1            "Strip on save
+
 let g:syntastic_python_checkers = ["python2", "flake8"]
+let g:syntastic_python_flake8_post_args='--ignore=E501,E402,F401'
 
 let g:vim_json_syntax_conceal = 0           "Do not hide quotes in json files. Used with elzr/vim-json pluggin
-let g:jedi#popup_on_dot = 0                 "Do not pop up completion when dot(.) appears. Use Ctrl+Space instead
-let g:jedi#use_splits_not_buffers = "right" "Use splits instead of buffers
-let g:jedi#show_call_signatures = "2"       "Show signs in command line
-let g:NERDSpaceDelims = 1                   "Force spaces after comment symbol
-"set timeoutlen=1000                         "Do not delay exit from INSERT
+
+"let g:airline_theme='distinguished'
+let g:lightline = { 'colorscheme': 'seoul256' }
+
+"let g:jedi#popup_on_dot = 0                 "Do not pop up completion when dot(.) appears. Use Ctrl+Space instead
+"let g:jedi#use_splits_not_buffers = "right" "Use splits instead of buffers
+"let g:jedi#show_call_signatures = "2"       "Show signs in command line
+
 set statusline+=%{gutentags#statusline('[Generating...]')}
+
 let g:gutentags_project_root = ['.svn']
+
+let g:vimwiki_list = [{'path_html': '/var/www/list/vimwiki/'}]
 
 " Proper colors for vim-indent_guides plugins
 let g:indent_guides_auto_colors = 0
@@ -58,10 +66,9 @@ let g:loaded_rrhelper = 1
 let g:loaded_spellfile_plugin = 1
 let g:loaded_vimballPlugin = 1
 
-""" END of Plgin specific
+"set timeoutlen=1000                         "Do not delay exit from INSERT
 
-" open almost everything in buffers
-"autocmd BufAdd,BufNewFile * nested tab sball
+""" END of Plgin specific
 
 " 256 color term tweaks
 let s:colorful_term=(&term=~"xterm") || (&term=~"screen")
@@ -92,14 +99,10 @@ set ignorecase                              "Ignore case when searching
 
 " View
 set number                                  "Enable numbering lines
-"set relativenumber                         "Enable numbering lines
 set showmode                                "Always show mode
 set background=dark                         "If we have black background in terminal
 "set t_Co=256                               "Use 256 colors for vim-airline
 colorscheme nofrils-dark                    "Use nice colorscheme
-"let g:airline_theme='base16'
-"let g:airline_theme='raven'
-let g:airline_theme='distinguished'
 set cursorline                              "Current line highlight
 set colorcolumn=120                         "Red line on 120 coloumn
 set ruler                                   "Always show current position
@@ -123,7 +126,7 @@ set termencoding=utf-8                      "Default terminal encoding
 set fileencodings=utf-8,cp1251,koi8-r       "Try to open file in this encodings
 
 " Syntax
-syntax on                                   "Enable syntax support
+"syntax on                                   "Enable syntax support
 "filetype on                                "Enable filetype support
 
 " History
