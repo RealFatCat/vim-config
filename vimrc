@@ -36,12 +36,20 @@ call plug#end()                           "Required (end of init)
 let g:better_whitespace_enabled=1           "Enable plugin
 let g:strip_whitespace_on_save=1            "Strip on save
 
+"syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ["python2", "flake8"]
 let g:syntastic_python_flake8_post_args='--ignore=E501,E402,F401'
+"end_syntastic
 
 let g:vim_json_syntax_conceal = 0           "Do not hide quotes in json files. Used with elzr/vim-json pluggin
 
-"let g:airline_theme='distinguished'
 let g:lightline = { 'colorscheme': 'seoul256' }
 
 "let g:jedi#popup_on_dot = 0                 "Do not pop up completion when dot(.) appears. Use Ctrl+Space instead
@@ -124,10 +132,6 @@ set showbreak=>\                            "Show where line is broken
 set encoding=utf-8                          "Default encoding
 set termencoding=utf-8                      "Default terminal encoding
 set fileencodings=utf-8,cp1251,koi8-r       "Try to open file in this encodings
-
-" Syntax
-"syntax on                                   "Enable syntax support
-"filetype on                                "Enable filetype support
 
 " History
 set undolevels=1024                         "How much undo levels should vim remember
