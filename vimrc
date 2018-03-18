@@ -19,7 +19,7 @@ Plug 'vim-syntastic/syntastic'              "Syntax checker for all
 Plug 'thinca/vim-quickrun'                  "Run script currently from VIM
 Plug 'itchyny/lightline.vim'                "Another status line
 Plug 'elzr/vim-json'                        "Better JSON file highlight
-"Plug 'davidhalter/jedi-vim.git'            "Python autocomplete
+Plug 'ajh17/VimCompletesMe'                 "another autocomplete
 Plug 'nathanaelkane/vim-indent-guides'      "Show lines at indentation (with <leader>ig)
 Plug 'ludovicchabant/vim-gutentags'         "Autotags
 Plug 'vimwiki/vimwiki'                      "Make wiki in vim
