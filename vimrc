@@ -34,7 +34,7 @@ call plug#end()                           "Required (end of init)
 
 """ Plugin specific
 let g:better_whitespace_enabled=1           "Enable plugin
-let g:strip_whitespace_on_save=1            "Strip on save
+"let g:strip_whitespace_on_save=1            "Strip on save
 
 "syntastic
 set statusline+=%#warningmsg#
@@ -187,6 +187,7 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+map <leader>gf :tabe <cfile><cr>
 
 " Smarter Cursorline
 autocmd InsertLeave,WinEnter * set cursorline
