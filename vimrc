@@ -19,7 +19,7 @@ Plug 'vim-syntastic/syntastic'              "Syntax checker for all
 Plug 'thinca/vim-quickrun'                  "Run script currently from VIM
 Plug 'itchyny/lightline.vim'                "Another status line
 Plug 'elzr/vim-json'                        "Better JSON file highlight
-Plug 'ajh17/VimCompletesMe'                 "another autocomplete
+"Plug 'ajh17/VimCompletesMe'                 "another autocomplete
 Plug 'nathanaelkane/vim-indent-guides'      "Show lines at indentation (with <leader>ig)
 Plug 'ludovicchabant/vim-gutentags'         "Autotags
 Plug 'vimwiki/vimwiki'                      "Make wiki in vim
@@ -106,6 +106,8 @@ set magic                                   "Always enable magic for regex
 set ignorecase                              "Ignore case when searching
 
 " View
+set ttyfast                                 "Faster redrawing
+set lazyredraw                              "redraw only when needed
 set number                                  "Enable numbering lines
 set showmode                                "Always show mode
 set background=dark                         "If we have black background in terminal
