@@ -23,6 +23,7 @@ Plug 'elzr/vim-json'                        "Better JSON file highlight
 Plug 'nathanaelkane/vim-indent-guides'      "Show lines at indentation (with <leader>ig)
 Plug 'ludovicchabant/vim-gutentags'         "Autotags
 Plug 'vimwiki/vimwiki'                      "Make wiki in vim
+Plug 'tweekmonster/gofmt.vim'               "GoFmt
 
 "Fuzzy search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
