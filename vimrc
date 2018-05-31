@@ -46,7 +46,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ["python2", "flake8"]
-let g:syntastic_python_flake8_post_args='--ignore=E501,E402,F401'
+let g:syntastic_python_flake8_post_args='--ignore=E501,E402'
 "end_syntastic
 
 let g:vim_json_syntax_conceal = 0           "Do not hide quotes in json files. Used with elzr/vim-json pluggin
