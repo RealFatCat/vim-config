@@ -14,16 +14,14 @@ call plug#begin()
 
 Plug 'ntpeters/vim-better-whitespace'       "Show tralling whitespaces
 Plug 'mhinz/vim-signify'                    "Show diffs in-file
-Plug 'vim-syntastic/syntastic'              "Syntax checker for all
-"Plug 'sheerun/vim-polyglot'                "Syntax highlighting for all
 Plug 'thinca/vim-quickrun'                  "Run script currently from VIM
 Plug 'itchyny/lightline.vim'                "Another status line
 Plug 'elzr/vim-json'                        "Better JSON file highlight
-"Plug 'ajh17/VimCompletesMe'                 "another autocomplete
 Plug 'nathanaelkane/vim-indent-guides'      "Show lines at indentation (with <leader>ig)
-Plug 'ludovicchabant/vim-gutentags'         "Autotags
+"Plug 'ludovicchabant/vim-gutentags'         "Autotags
 Plug 'vimwiki/vimwiki'                      "Make wiki in vim
-Plug 'tweekmonster/gofmt.vim'               "GoFmt
+Plug 'w0rp/ale'                             "ALE (Asynchronous Lint Engine)
+Plug 'fatih/vim-go'                         "Golang vim plug
 
 "Fuzzy search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
@@ -37,29 +35,9 @@ call plug#end()                           "Required (end of init)
 let g:better_whitespace_enabled=1           "Enable plugin
 "let g:strip_whitespace_on_save=1            "Strip on save
 
-"syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['python', 'flake8']
-let g:syntastic_python_flake8_post_args='--ignore=E501,E402'
-"end_syntastic
-
 let g:vim_json_syntax_conceal = 0           "Do not hide quotes in json files. Used with elzr/vim-json pluggin
 
 let g:lightline = { 'colorscheme': 'seoul256' }
-
-"let g:jedi#popup_on_dot = 0                 "Do not pop up completion when dot(.) appears. Use Ctrl+Space instead
-"let g:jedi#use_splits_not_buffers = "right" "Use splits instead of buffers
-"let g:jedi#show_call_signatures = "2"       "Show signs in command line
-
-set statusline+=%{gutentags#statusline('[Generating...]')}
-
-let g:gutentags_project_root = ['.svn']
 
 let g:vimwiki_list = [{'path_html': '/var/www/list/vimwiki/'}]
 
@@ -74,8 +52,6 @@ let g:loaded_getscriptPlugin = 1
 let g:loaded_rrhelper = 1
 let g:loaded_spellfile_plugin = 1
 let g:loaded_vimballPlugin = 1
-
-"set timeoutlen=1000                         "Do not delay exit from INSERT
 
 """ END of Plgin specific
 
@@ -121,7 +97,6 @@ set laststatus=2                            "Always show status line
 set visualbell                              "Use visual bell instead of beeping when something wrong
 set wildmenu                                "Enable wildmenu. It's realy wild.
 set showcmd                                 "Show entered symbols
-"set list lcs=tab:\|\                        "Mark tabulated indents
 
 """ Hardcore wrapping lines
 set nowrap                                    "Enable wrap lines
@@ -143,16 +118,11 @@ set history=256                             "Sets how many lines of history VIM 
 set tabstop=4                               "Change tabs by four spaces.
 set softtabstop=4                           "Change tabs by four spaces.
 set shiftwidth=4                            "Move the string by four symbols on string shifting.
-"set textwidth=119
 set expandtab                               "Always change tabs into spaces.
 set autoindent                              "Make auto indent (Cap here)
 set fileformat=unix
 set hidden                                  "Switch between buffers without having to save first.
 
-"au BufNewFile,BufRead *.js, *.html, *.css
-"    \ set tabstop=2
-"    \ set softtabstop=2
-"    \ set shiftwidth=2
 
 " Experimental
 "set smarttab                                "Analyse indents in doc and do same shit
@@ -195,73 +165,3 @@ map <leader>gf :tabe <cfile><cr>
 " Smarter Cursorline
 autocmd InsertLeave,WinEnter * set cursorline
 autocmd InsertEnter,WinLeave * set nocursorline
-
-" RU Keyboard mapping
-map ё `
-map й q
-map ц w
-map у e
-map к r
-map е t
-map н y
-map г u
-map ш i
-map щ o
-map з p
-map х [
-map ъ ]
-map ф a
-map ы s
-map в d
-map а f
-map п g
-map р h
-map о j
-map л k
-map д l
-map ж ;
-map э '
-map я z
-map ч x
-map с c
-map м v
-map и b
-map т n
-map ь m
-map б ,
-map ю .
-map Ё ~
-map Й Q
-map Ц W
-map У E
-map К R
-map Е T
-map Н Y
-map Г U
-map Ш I
-map Щ O
-map З P
-map Х {
-map Ъ }
-map Ф A
-map Ы S
-map В D
-map А F
-map П G
-map Р H
-map О J
-map Л K
-map Д L
-map Ж :
-map Э "
-map Я Z
-map Ч X
-map С C
-map М V
-map И B
-map Т N
-map Ь M
-map Б <
-map Ю >
-
-""" END of Mapping
