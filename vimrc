@@ -33,7 +33,25 @@ call plug#end()                           "Required (end of init)
 
 """ Plugin specific
 let g:better_whitespace_enabled=1           "Enable plugin
-"let g:strip_whitespace_on_save=1            "Strip on save
+
+"" vim-go specific
+
+let g:go_autodetect_gopath = 1
+
+" move around errors
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+
+" GoBuild shortcut
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+
+" GoDoc shortcut
+autocmd FileType go nmap <Leader>d <Plug>(go-doc)
+
+" Show info about function info
+let g:go_auto_type_info = 1
+
+"" end of vim-go specific
 
 let g:vim_json_syntax_conceal = 0           "Do not hide quotes in json files. Used with elzr/vim-json pluggin
 
@@ -97,6 +115,8 @@ set laststatus=2                            "Always show status line
 set visualbell                              "Use visual bell instead of beeping when something wrong
 set wildmenu                                "Enable wildmenu. It's realy wild.
 set showcmd                                 "Show entered symbols
+set autoread                                "Auto read changed files
+set noshowmode                              "We show mode via lightline
 
 """ Hardcore wrapping lines
 set nowrap                                    "Enable wrap lines
@@ -125,14 +145,25 @@ set hidden                                  "Switch between buffers without havi
 
 
 " Experimental
-"set smarttab                                "Analyse indents in doc and do same shit
 set shellslash                              "Change backslash to slash in paths. Because backslash sucks.
 set scrolloff=7                             "When the page starts to scroll, keep the cursor 7 lines from the top and bottom."
 set foldmethod=indent                       "Fold by indents (for Python)
 set foldlevelstart=99                       "Do not autofold on fileopen
 set foldlevel=99                            "Do not autofold on fileopen
 set pastetoggle=<F2>
-set clipboard+=unnamedplus
+set autowrite                               "Save before :make
+
+" Enable to copy to clipboard for operations like yank, delete, change and put
+if has('unnamedplus')
+  set clipboard^=unnamed
+  set clipboard^=unnamedplus
+endif
+
+" This enables us to undo files even if you exit Vim.
+if has('persistent_undo')
+  set undofile
+  set undodir=~/.vim/tmp/undo/
+endif
 
 """ Mapping
 
@@ -145,14 +176,8 @@ nmap <F4> :set invnumber<CR>
 " Buffers => tabs
 nmap <F5> :tab sball <CR>
 
-" Open nerdtree with Ctrl+n
-nmap <C-n> :NERDTree<CR>
-
 " Start FZF
 nmap <C-p> :FZF<CR>
-
-" Because I'm tired to write ! symbol
-cmap q  q!
 
 " Enabling hardcore mode in normal mode
 noremap <Up> <NOP>
