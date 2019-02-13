@@ -18,7 +18,6 @@ Plug 'thinca/vim-quickrun'                  "Run script currently from VIM
 Plug 'itchyny/lightline.vim'                "Another status line
 Plug 'elzr/vim-json'                        "Better JSON file highlight
 Plug 'nathanaelkane/vim-indent-guides'      "Show lines at indentation (with <leader>ig)
-"Plug 'ludovicchabant/vim-gutentags'         "Autotags
 Plug 'vimwiki/vimwiki'                      "Make wiki in vim
 Plug 'w0rp/ale'                             "ALE (Asynchronous Lint Engine)
 Plug 'fatih/vim-go'                         "Golang vim plug
@@ -90,6 +89,7 @@ if s:colorful_term
     endif
 endif
 
+set bs=2
 
 " Searching
 set smartcase                               "Try to be smarter about cases

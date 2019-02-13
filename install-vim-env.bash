@@ -11,6 +11,7 @@ do_install(){
         rm -rf .vim.old
     fi
     mv .vim .vim.old || :
+    install -d .vim
 
     git clone https://github.com/robertmeta/nofrils.git ~/git/nofrils
 
