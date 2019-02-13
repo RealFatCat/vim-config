@@ -33,6 +33,10 @@ call plug#end()                           "Required (end of init)
 """ Plugin specific
 let g:better_whitespace_enabled=1           "Enable plugin
 
+" Enable completion where available.
+" This setting must be set before ALE is loaded.
+let g:ale_completion_enabled = 1
+
 "" vim-go specific
 
 let g:go_autodetect_gopath = 1
@@ -48,7 +52,7 @@ autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <Leader>d <Plug>(go-doc)
 
 " Show info about function info
-let g:go_auto_type_info = 1
+let g:go_auto_type_info = 0
 
 "" end of vim-go specific
 
