@@ -14,12 +14,10 @@ call plug#begin()
 
 Plug 'ntpeters/vim-better-whitespace'       "Show tralling whitespaces
 Plug 'mhinz/vim-signify'                    "Show diffs in-file
-Plug 'thinca/vim-quickrun'                  "Run script currently from VIM
 Plug 'itchyny/lightline.vim'                "Another status line
 Plug 'elzr/vim-json'                        "Better JSON file highlight
 Plug 'nathanaelkane/vim-indent-guides'      "Show lines at indentation (with <leader>ig)
-Plug 'vimwiki/vimwiki'                      "Make wiki in vim
-Plug 'w0rp/ale'                             "ALE (Asynchronous Lint Engine)
+Plug 'dense-analysis/ale'                   "ALE (Asynchronous Lint Engine)
 Plug 'fatih/vim-go'                         "Golang vim plug
 
 "Fuzzy search
@@ -31,11 +29,7 @@ call plug#end()                           "Required (end of init)
 """ End of Vim-Plug section
 
 """ Plugin specific
-let g:better_whitespace_enabled=1           "Enable plugin
-
-" Enable completion where available.
-" This setting must be set before ALE is loaded.
-let g:ale_completion_enabled = 1
+let g:better_whitespace_enabled=1
 
 "" vim-go specific
 
@@ -48,19 +42,14 @@ map <C-m> :cprevious<CR>
 " GoBuild shortcut
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 
-" GoDoc shortcut
-autocmd FileType go nmap <Leader>d <Plug>(go-doc)
-
 " Show info about function info
-let g:go_auto_type_info = 0
+let g:go_auto_type_info = 1
 
 "" end of vim-go specific
 
 let g:vim_json_syntax_conceal = 0           "Do not hide quotes in json files. Used with elzr/vim-json pluggin
 
 let g:lightline = { 'colorscheme': 'seoul256' }
-
-let g:vimwiki_list = [{'path_html': '/var/www/list/vimwiki/'}]
 
 " Proper colors for vim-indent_guides plugins
 let g:indent_guides_auto_colors = 0
@@ -110,10 +99,9 @@ set lazyredraw                              "redraw only when needed
 set number                                  "Enable numbering lines
 set showmode                                "Always show mode
 set background=dark                         "If we have black background in terminal
-"set t_Co=256                               "Use 256 colors for vim-airline
 colorscheme nofrils-dark                    "Use nice colorscheme
 set cursorline                              "Current line highlight
-set colorcolumn=120                         "Red line on 120 coloumn
+set colorcolumn=120                         "Line on 120 coloumn
 set ruler                                   "Always show current position
 set laststatus=2                            "Always show status line
 set visualbell                              "Use visual bell instead of beeping when something wrong
@@ -122,13 +110,7 @@ set showcmd                                 "Show entered symbols
 set autoread                                "Auto read changed files
 set noshowmode                              "We show mode via lightline
 
-""" Hardcore wrapping lines
-set nowrap                                    "Enable wrap lines
-set textwidth=0                             "Preventing Vim from automatically inserting line breaks (<CR>)
-set wrapmargin=0                            "Also need for preventing Vim from automatically inserting line breaks
-set linebreak                               "Drop whole word to new line, but not by character
-set nolist                                  "Because 'list' disables linebreak
-set showbreak=>\                            "Show where line is broken
+set nowrap                                  "Disable wrap lines
 
 " Encoding
 set encoding=utf-8                          "Default encoding
@@ -157,7 +139,7 @@ set foldlevel=99                            "Do not autofold on fileopen
 set pastetoggle=<F2>
 set autowrite                               "Save before :make
 
-" Enable to copy to clipboard for operations like yank, delete, change and put
+" Enable copy to clipboard for operations like yank, delete, change and put
 if has('unnamedplus')
   set clipboard^=unnamed
   set clipboard^=unnamedplus
