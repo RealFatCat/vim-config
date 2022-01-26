@@ -1,22 +1,22 @@
 #!/bin/bash
-set -x
-# This script installs my vim environment from scratch.
-# Works on Arch/Debian/Ubuntu.
-do_install(){
+set -ex
 
-    cd ~
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+COLORS_URL="https://github.com/robertmeta/nofrils.git"
+COLORS_DST="${HOME}/git/robertmeta/nofrils"
+HOME_VIM_DIR="${HOME}/.vim"
+HOME_VIMRC="${HOME}/.vimrc"
 
-    mv .vimrc .vimrc.old || :
-    if [ -e '.vim.old' ]; then
-        rm -rf .vim.old
-    fi
-    mv .vim .vim.old || :
-    install -d .vim
+if [ -d "${HOME_VIM_DIR}" ]; then
+    mv -f ${HOME_VIM_DIR} ${HOME_VIM_DIR}.old
+fi
+install -d ${HOME_VIM_DIR}
 
-    git clone https://github.com/robertmeta/nofrils.git ~/git/nofrils
+if [ -e "${HOME_VIMRC}" ]; then
+    mv -f ${HOME_VIMRC} ${HOME_VIMRC}.old
+fi
 
-    ln -s git/vim-config/vimrc .vimrc
-    ln -s ~/git/nofrils/colors ~/.vim/
-}
+git clone ${COLORS_URL} ${COLORS_DST}
 
-do_install
+ln -s ${SCRIPTPATH}/vimrc ${HOME_VIMRC}
+ln -s ${COLORS_DST}/colors ${HOME_VIM_DIR}
