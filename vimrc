@@ -35,13 +35,6 @@ let g:better_whitespace_enabled=1
 
 let g:go_autodetect_gopath = 1
 
-" move around errors
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-
-" GoBuild shortcut
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-
 " Show info about function info
 let g:go_auto_type_info = 1
 
@@ -66,21 +59,21 @@ let g:loaded_vimballPlugin = 1
 """ END of Plgin specific
 
 " 256 color term tweaks
-let s:colorful_term=(&term=~"xterm") || (&term=~"screen")
-if s:colorful_term
-    " 256 color -- this is a bad idea generally, but I use it anyway
-    let &t_Co=256
-    " don't clear background color
-    set t_ut=
-    " restore screen after quitting
-    if has("terminfo")
-        let &t_Sb="\ESC[4%p1%dm"
-        let &t_Sf="\ESC[3%p1%dm"
-    else
-        let &t_Sb="\ESC[4%dm"
-        let &t_Sf="\ESC[3%dm"
-    endif
-endif
+"let s:colorful_term=(&term=~"xterm") || (&term=~"screen")
+"if s:colorful_term
+"    " 256 color -- this is a bad idea generally, but I use it anyway
+"    let &t_Co=256
+"    " don't clear background color
+"    set t_ut=
+"    " restore screen after quitting
+"    if has("terminfo")
+"        let &t_Sb="\ESC[4%p1%dm"
+"        let &t_Sf="\ESC[3%p1%dm"
+"    else
+"        let &t_Sb="\ESC[4%dm"
+"        let &t_Sf="\ESC[3%dm"
+"    endif
+"endif
 
 set bs=2
 
@@ -131,9 +124,7 @@ set hidden                                  "Switch between buffers without havi
 
 
 " Experimental
-set shellslash                              "Change backslash to slash in paths. Because backslash sucks.
 set scrolloff=7                             "When the page starts to scroll, keep the cursor 7 lines from the top and bottom."
-set foldmethod=indent                       "Fold by indents (for Python)
 set foldlevelstart=99                       "Do not autofold on fileopen
 set foldlevel=99                            "Do not autofold on fileopen
 set pastetoggle=<F2>
@@ -145,7 +136,7 @@ if has('unnamedplus')
   set clipboard^=unnamedplus
 endif
 
-" This enables us to undo files even if you exit Vim.
+" Undo files even after exit.
 if has('persistent_undo')
   set undofile
   set undodir=~/.vim/tmp/undo/
